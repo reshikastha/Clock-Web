@@ -1,0 +1,561 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --alarm-background: #111419;
+  --alarm-sidebar: #191d23;
+  --alarm-card: #1a1e24;
+  --alarm-active: #292e36;
+  --alarm-border: #343a44;
+  --alarm-text: #f6f7f9;
+  --alarm-blue-text: #91a4cc;
+  --alarm-muted: #59647b;
+  --alarm-orange: #ff6433;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--alarm-background);
+  color: var(--alarm-text);
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+.alarm-dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 206px minmax(0, 1fr);
+  background-color: var(--alarm-background);
+  background-image: radial-gradient(
+    circle,
+    rgba(108, 120, 145, 0.14) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Sidebar */
+
+.alarm-sidebar {
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--alarm-sidebar);
+  border-right: 1px solid var(--alarm-border);
+}
+
+.alarm-logo-section {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--alarm-border);
+}
+
+.alarm-logo-section h2 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.alarm-logo-section p {
+  margin: 3px 0 0;
+  color: #6e7890;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+}
+
+.alarm-logo-clock {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  border: 1.5px solid var(--alarm-orange);
+  border-left-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.alarm-logo-hand {
+  width: 1px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  left: 12px;
+  background: var(--alarm-orange);
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.alarm-logo-dot {
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 11px;
+  left: 10.5px;
+  background: var(--alarm-orange);
+  border-radius: 50%;
+}
+
+.alarm-navigation {
+  display: grid;
+  gap: 4px;
+  padding: 19px 12px 19px 0;
+}
+
+.alarm-navigation button {
+  width: 100%;
+  min-height: 39px;
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0 8px 8px 0;
+  background: transparent;
+  color: #91a0bf;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.alarm-navigation button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.alarm-navigation button span {
+  font-size: 0.86rem;
+}
+
+.alarm-navigation button small {
+  color: #737e95;
+}
+
+.alarm-navigation button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.alarm-navigation button.active {
+  color: white;
+  background: var(--alarm-active);
+  border-left-color: var(--alarm-orange);
+}
+
+.alarm-local-zone {
+  margin-top: auto;
+  padding: 18px 10px 21px;
+  border-top: 1px solid var(--alarm-border);
+}
+
+.alarm-local-zone p {
+  margin: 0;
+  color: #667188;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+
+.alarm-local-zone span {
+  display: block;
+  margin-top: 6px;
+  color: #90a5cf;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+}
+
+/* Header */
+
+.alarm-main {
+  min-width: 0;
+}
+
+.alarm-header {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 44px;
+  border-bottom: 1px solid rgba(52, 58, 68, 0.6);
+}
+
+.alarm-label {
+  margin: 0 0 7px;
+  color: var(--alarm-orange);
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.alarm-header h1 {
+  margin: 0;
+  font-size: 1.58rem;
+  letter-spacing: -0.04em;
+}
+
+.alarm-current-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.alarm-current-time strong {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.75rem;
+}
+
+.alarm-current-time span {
+  margin-top: 3px;
+  color: #91a6cf;
+  font-size: 0.75rem;
+}
+
+.alarm-content {
+  padding: 12px 44px 40px;
+}
+
+/* Reference section */
+
+.alarm-reference-card {
+  min-height: 264px;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  padding: 30px 35px;
+  background: rgba(27, 31, 37, 0.96);
+  border: 1px solid var(--alarm-border);
+  border-radius: 14px;
+}
+
+.alarm-reference-information {
+  max-width: 440px;
+}
+
+.alarm-reference-information h2 {
+  margin: 0 0 10px;
+  font-size: 1.18rem;
+}
+
+.alarm-description {
+  margin: 0;
+  color: var(--alarm-blue-text);
+  font-size: 0.89rem;
+  line-height: 1.55;
+}
+
+.alarm-clock-details {
+  display: flex;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.alarm-clock-details div {
+  min-width: 104px;
+  padding: 0 13px;
+  border-left: 2px solid #303640;
+}
+
+.alarm-clock-details span {
+  display: block;
+  color: var(--alarm-muted);
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
+}
+
+.alarm-clock-details strong {
+  display: block;
+  margin-top: 7px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+}
+
+/* Analog clock */
+
+.alarm-analog-clock {
+  width: 146px;
+  height: 146px;
+  flex-shrink: 0;
+  position: relative;
+  background: #191d23;
+  border: 2px solid #353b45;
+  border-radius: 50%;
+}
+
+.alarm-clock-marker {
+  width: 1px;
+  height: 4px;
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 0.5px);
+  background: #4d5668;
+  transform-origin: 0.5px 67px;
+}
+
+.alarm-clock-marker.major-marker {
+  width: 1.5px;
+  height: 9px;
+  background: #8790a0;
+}
+
+.alarm-clock-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  display: block;
+  border-radius: 10px;
+  transform-origin: bottom center;
+}
+
+.alarm-hour-hand {
+  width: 4px;
+  height: 35px;
+  margin-left: -2px;
+  background: #f5f5f5;
+}
+
+.alarm-minute-hand {
+  width: 3px;
+  height: 50px;
+  margin-left: -1.5px;
+  background: #f5f5f5;
+}
+
+.alarm-second-hand {
+  width: 2px;
+  height: 56px;
+  margin-left: -1px;
+  background: var(--alarm-orange);
+}
+
+.alarm-clock-centre {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--alarm-orange);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Alarm list */
+
+.alarms-card {
+  margin-top: 28px;
+  padding: 28px 26px 26px;
+  background: rgba(27, 31, 37, 0.96);
+  border: 1px solid var(--alarm-border);
+  border-radius: 14px;
+}
+
+.alarms-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.alarm-row {
+  min-height: 69px;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid #313740;
+}
+
+.alarm-row:last-child {
+  border-bottom: none;
+}
+
+.alarm-row time {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.alarm-row.disabled time {
+  color: #556177;
+}
+
+.alarm-information h3 {
+  margin: 0 0 3px;
+  font-size: 0.81rem;
+}
+
+.alarm-information p {
+  margin: 0;
+  color: #91a4cc;
+  font-size: 0.68rem;
+}
+
+.alarm-switch {
+  width: 41px;
+  height: 23px;
+  position: relative;
+  padding: 2px;
+  border: 1px solid #3b424e;
+  border-radius: 20px;
+  background: #242a33;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.alarm-switch span {
+  width: 17px;
+  height: 17px;
+  display: block;
+  background: #667083;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.alarm-switch.enabled {
+  border-color: var(--alarm-orange);
+  background: rgba(255, 100, 51, 0.3);
+}
+
+.alarm-switch.enabled span {
+  background: var(--alarm-orange);
+  transform: translateX(17px);
+}
+
+.add-alarm-button {
+  height: 39px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 19px;
+  padding: 0 15px;
+  border: 1px solid var(--alarm-border);
+  border-radius: 8px;
+  background: transparent;
+  color: #91a4cc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-alarm-button svg {
+  width: 14px;
+}
+
+.add-alarm-button:hover {
+  color: var(--alarm-orange);
+  border-color: var(--alarm-orange);
+}
+
+.alarm-footer {
+  margin-top: 34px;
+  color: #455067;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .alarm-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .alarm-sidebar {
+    min-height: auto;
+    position: static;
+  }
+
+  .alarm-logo-section {
+    height: 66px;
+    padding: 0 20px;
+  }
+
+  .alarm-navigation {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--alarm-border);
+  }
+
+  .alarm-navigation button {
+    border-radius: 8px;
+  }
+
+  .alarm-navigation button small,
+  .alarm-local-zone {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .alarm-header {
+    min-height: auto;
+    padding: 23px 20px;
+    align-items: flex-start;
+  }
+
+  .alarm-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .alarm-current-time strong {
+    font-size: 1.05rem;
+  }
+
+  .alarm-current-time span {
+    font-size: 0.65rem;
+  }
+
+  .alarm-content {
+    padding: 12px 20px 35px;
+  }
+
+  .alarm-navigation button {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .alarm-navigation button span {
+    display: none;
+  }
+
+  .alarm-reference-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 22px;
+  }
+
+  .alarm-analog-clock {
+    align-self: center;
+  }
+
+  .alarm-clock-details {
+    width: 100%;
+    gap: 5px;
+  }
+
+  .alarm-clock-details div {
+    min-width: 0;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .alarms-card {
+    padding: 20px;
+  }
+
+  .alarm-row {
+    grid-template-columns: 90px 1fr auto;
+  }
+
+  .alarm-row time {
+    font-size: 1.1rem;
+  }
+}

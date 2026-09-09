@@ -1,0 +1,615 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #111419;
+  --sidebar: #191d23;
+  --card: #1a1e24;
+  --active: #292e36;
+  --border: #343a44;
+  --text: #f6f7f9;
+  --secondary: #91a4cc;
+  --muted: #59647b;
+  --orange: #ff7040;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+.tool-dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 214px minmax(0, 1fr);
+  background-color: var(--background);
+  background-image: radial-gradient(
+    circle,
+    rgba(108, 120, 145, 0.13) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Sidebar */
+
+.tool-sidebar {
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+}
+
+.tool-logo {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 19px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-logo h2 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.tool-logo p {
+  margin: 3px 0 0;
+  color: #6e7890;
+  font-size: 0.58rem;
+  letter-spacing: 0.17em;
+}
+
+.tool-logo-clock {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  border: 1.5px solid var(--orange);
+  border-left-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.tool-logo-clock span {
+  width: 2px;
+  height: 8px;
+  position: absolute;
+  top: 5px;
+  left: 11px;
+  background: var(--orange);
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.tool-sidebar nav {
+  display: grid;
+  gap: 4px;
+  padding: 18px 12px 18px 6px;
+}
+
+.tool-sidebar nav button {
+  min-height: 39px;
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #91a0bf;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tool-sidebar nav button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tool-sidebar nav button span {
+  font-size: 0.86rem;
+}
+
+.tool-sidebar nav button small {
+  color: #737e95;
+}
+
+.tool-sidebar nav button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tool-sidebar nav button.active {
+  color: white;
+  background: var(--active);
+  border-left-color: var(--orange);
+}
+
+.tool-local-zone {
+  margin-top: auto;
+  padding: 18px 19px 30px;
+  border-top: 1px solid var(--border);
+}
+
+.tool-local-zone p {
+  margin: 0;
+  color: #667188;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+
+.tool-local-zone span {
+  display: block;
+  margin-top: 6px;
+  color: #90a5cf;
+  font: 400 0.78rem "IBM Plex Mono", monospace;
+}
+
+/* Header */
+
+.tool-main {
+  min-width: 0;
+}
+
+.tool-header {
+  min-height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 44px;
+  border-bottom: 1px solid rgba(52, 58, 68, 0.5);
+}
+
+.tool-label {
+  margin: 0 0 7px;
+  color: var(--orange);
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.tool-header h1 {
+  margin: 0;
+  font-size: 1.58rem;
+  letter-spacing: -0.04em;
+}
+
+.tool-current-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tool-current-time strong {
+  font: 700 1.75rem "IBM Plex Mono", monospace;
+}
+
+.tool-current-time span {
+  margin-top: 3px;
+  color: #91a6cf;
+  font-size: 0.75rem;
+}
+
+.tool-content {
+  padding: 13px 44px 40px;
+}
+
+/* Reference card */
+
+.tool-reference-card {
+  min-height: 264px;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  padding: 30px 35px;
+  background: rgba(27, 31, 37, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.tool-reference-info {
+  max-width: 440px;
+}
+
+.tool-reference-info h2 {
+  margin: 0 0 10px;
+  font-size: 1.18rem;
+}
+
+.tool-description {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.89rem;
+  line-height: 1.55;
+}
+
+.tool-details {
+  display: flex;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.tool-details div {
+  min-width: 104px;
+  padding: 0 13px;
+  border-left: 2px solid #303640;
+}
+
+.tool-details span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
+}
+
+.tool-details strong {
+  display: block;
+  margin-top: 7px;
+  font: 600 0.82rem "IBM Plex Mono", monospace;
+}
+
+/* Analog clock */
+
+.tool-analog-clock {
+  width: 146px;
+  height: 146px;
+  flex-shrink: 0;
+  position: relative;
+  background: #191d23;
+  border: 2px solid #353b45;
+  border-radius: 50%;
+}
+
+.tool-marker {
+  width: 1px;
+  height: 4px;
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 0.5px);
+  background: #4d5668;
+  transform-origin: 0.5px 67px;
+}
+
+.tool-marker.major {
+  width: 1.5px;
+  height: 9px;
+  background: #8790a0;
+}
+
+.tool-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border-radius: 10px;
+  transform-origin: bottom center;
+}
+
+.tool-hand.hour {
+  width: 4px;
+  height: 35px;
+  margin-left: -2px;
+  background: white;
+}
+
+.tool-hand.minute {
+  width: 3px;
+  height: 50px;
+  margin-left: -1.5px;
+  background: white;
+}
+
+.tool-hand.second {
+  width: 2px;
+  height: 56px;
+  margin-left: -1px;
+  background: var(--orange);
+}
+
+.tool-clock-centre {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--orange);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Stopwatch */
+
+.stopwatch-card {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 28px;
+  padding: 35px;
+  background: rgba(27, 31, 37, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.stopwatch-display {
+  display: flex;
+  align-items: baseline;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.stopwatch-display span {
+  font-size: clamp(3.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+}
+
+.stopwatch-display small {
+  margin-left: 4px;
+  color: #657087;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.stopwatch-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 29px;
+}
+
+.stopwatch-buttons button,
+.timer-buttons button {
+  width: 110px;
+  height: 43px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #22272f;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stopwatch-buttons button:disabled,
+.timer-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.primary-button {
+  border-color: var(--orange) !important;
+  background: #914025 !important;
+  color: white;
+}
+
+.lap-list {
+  width: min(360px, 100%);
+  max-height: 140px;
+  overflow-y: auto;
+  margin-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.lap-list div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 3px;
+  border-bottom: 1px solid var(--border);
+  color: var(--secondary);
+  font-size: 0.75rem;
+}
+
+.lap-list strong {
+  color: white;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Timer */
+
+.timer-card {
+  min-height: 355px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 28px;
+  padding: 38px;
+  background: rgba(27, 31, 37, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.timer-progress {
+  width: 206px;
+  height: 206px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.timer-progress > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--card);
+  border-radius: 50%;
+}
+
+.timer-progress strong {
+  font: 700 2rem "IBM Plex Mono", monospace;
+}
+
+.timer-progress span {
+  margin-top: 8px;
+  color: #657087;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+}
+
+.timer-options {
+  width: 230px;
+  display: grid;
+  gap: 10px;
+}
+
+.timer-options > button {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #232831;
+  cursor: pointer;
+}
+
+.timer-options > button:hover,
+.timer-options > button.selected {
+  border-color: var(--orange);
+}
+
+.timer-options > button span {
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.timer-options > button small {
+  color: #69748b;
+  font: 500 0.68rem "IBM Plex Mono", monospace;
+}
+
+.timer-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.tool-footer {
+  margin-top: 34px;
+  color: #455067;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .tool-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-sidebar {
+    min-height: auto;
+    position: static;
+  }
+
+  .tool-logo {
+    height: 66px;
+  }
+
+  .tool-sidebar nav {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tool-sidebar nav button {
+    justify-content: center;
+  }
+
+  .tool-sidebar nav button small,
+  .tool-local-zone {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .tool-header {
+    min-height: auto;
+    padding: 23px 20px;
+    align-items: flex-start;
+  }
+
+  .tool-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .tool-current-time strong {
+    font-size: 1rem;
+  }
+
+  .tool-current-time span {
+    font-size: 0.62rem;
+  }
+
+  .tool-content {
+    padding: 12px 20px 35px;
+  }
+
+  .tool-sidebar nav button {
+    display: flex;
+    padding: 0;
+  }
+
+  .tool-sidebar nav button span {
+    display: none;
+  }
+
+  .tool-reference-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 22px;
+  }
+
+  .tool-analog-clock {
+    align-self: center;
+  }
+
+  .tool-details {
+    width: 100%;
+    gap: 5px;
+  }
+
+  .tool-details div {
+    min-width: 0;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .timer-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .timer-options {
+    width: 100%;
+  }
+
+  .stopwatch-buttons {
+    width: 100%;
+  }
+
+  .stopwatch-buttons button {
+    width: auto;
+    flex: 1;
+  }
+}
