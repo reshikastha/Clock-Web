@@ -22,11 +22,11 @@ body {
   color: var(--alarm-text);
   font-family: "Inter", sans-serif;
 }
-
+/* 
 button {
   color: inherit;
   font: inherit;
-}
+} */
 
 .alarm-dashboard {
   min-height: 100vh;
@@ -558,4 +558,178 @@ button {
   .alarm-row time {
     font-size: 1.1rem;
   }
+}
+
+
+
+
+
+
+.alarm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 20px;
+  background: rgba(5, 8, 13, 0.76);
+  backdrop-filter: blur(7px);
+  display: grid;
+  place-items: center;
+  animation: alarmFadeIn 0.2s ease;
+}
+
+.alarm-modal {
+  width: min(500px, 100%);
+  padding: 28px;
+  border: 1px solid #343b47;
+  border-radius: 18px;
+  background: #191d25;
+  color: #f6f7fa;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+  animation: alarmModalIn 0.25s ease;
+}
+
+.alarm-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 26px;
+}
+
+.alarm-modal-eyebrow {
+  color: #ff7043;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.alarm-modal-header h2 {
+  margin: 6px 0 0;
+  font-size: 25px;
+}
+
+.alarm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.alarm-form label {
+  color: #9aa8bd;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.alarm-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #343b47;
+  border-radius: 10px;
+  outline: none;
+  background: #12161d;
+  color: #ffffff;
+  font: inherit;
+  color-scheme: dark;
+}
+
+.alarm-form input:focus {
+  border-color: #ff7043;
+  box-shadow: 0 0 0 3px
+    rgba(255, 112, 67, 0.12);
+}
+
+.alarm-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.alarm-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.alarm-cancel-button,
+.alarm-save-button {
+  min-width: 120px;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alarm-cancel-button {
+  border: 1px solid #343b47;
+  background: #222730;
+  color: #ffffff;
+}
+
+.alarm-save-button {
+  border: 1px solid #ff7043;
+  background: #963e22;
+  color: #ffffff;
+}
+
+.alarm-save-button:hover {
+  background: #ad4828;
+}
+
+.alarm-save-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.alarm-error {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 9px;
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff9292;
+  font-size: 13px;
+}
+
+.alarm-status,
+.empty-alarms {
+  color: #8996aa;
+  text-align: center;
+}
+
+.empty-alarms {
+  padding: 45px 20px;
+}
+
+.empty-alarms svg {
+  width: 35px;
+  height: 35px;
+  color: #ff7043;
+}
+
+.empty-alarms h3 {
+  margin: 12px 0 5px;
+  color: #ffffff;
+}
+
+.empty-alarms p {
+  margin: 0;
+}
+
+
+.alarm-icon-button {
+  background: rgba(27, 31, 37, 0.96);
+   border: none;
+   color: white; 
+   padding: 10px;
+}
+
+.alarm-modal-close {
+  background: rgba(27, 31, 37, 0.96);
+   border: none;
+   color: white; 
+   padding: 10px;
 }
