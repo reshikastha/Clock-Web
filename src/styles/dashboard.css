@@ -555,3 +555,237 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+
+.city-card {
+  position: relative;
+}
+
+.delete-city-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #68758a;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.city-card:hover .delete-city-button {
+  opacity: 1;
+}
+
+.delete-city-button:hover {
+  border-color: rgba(255, 107, 107, 0.5);
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff6b6b;
+}
+
+.delete-city-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.city-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 20px;
+  background: rgba(5, 8, 13, 0.78);
+  backdrop-filter: blur(7px);
+  display: grid;
+  place-items: center;
+}
+
+.city-modal {
+  width: min(500px, 100%);
+  padding: 28px;
+  border: 1px solid #343b47;
+  border-radius: 18px;
+  background: #191d25;
+  color: #ffffff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  animation: cityModalOpen 0.25s ease;
+}
+
+.city-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.city-modal-header span {
+  color: #ff7043;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.city-modal-header h2 {
+  margin: 6px 0 0;
+  font-size: 25px;
+}
+
+.city-modal-close {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #343b47;
+  border-radius: 9px;
+  background: #222730;
+  color: #9aa8bd;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.city-modal-close:hover {
+  border-color: #ff7043;
+  color: #ffffff;
+}
+
+.city-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.city-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.city-form label {
+  color: #9aa8bd;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.city-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #343b47;
+  border-radius: 10px;
+  outline: none;
+  background: #12161d;
+  color: #ffffff;
+  font: inherit;
+}
+
+.city-form input:focus {
+  border-color: #ff7043;
+  box-shadow: 0 0 0 3px
+    rgba(255, 112, 67, 0.12);
+}
+
+.timezone-example {
+  padding: 12px;
+  border: 1px solid #2e3540;
+  border-radius: 9px;
+  background: #151920;
+  color: #77859a;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.timezone-example svg {
+  width: 16px;
+  min-width: 16px;
+  color: #ff7043;
+}
+
+.city-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 5px;
+}
+
+.city-cancel-button,
+.city-save-button {
+  min-width: 115px;
+  padding: 12px 18px;
+  border-radius: 9px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.city-cancel-button {
+  border: 1px solid #343b47;
+  background: #222730;
+}
+
+.city-save-button {
+  border: 1px solid #ff7043;
+  background: #963e22;
+}
+
+.city-save-button:hover {
+  background: #ad4828;
+}
+
+.city-save-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.city-error-message,
+.timezone-api-message {
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 9px;
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff9292;
+  font-size: 13px;
+}
+
+.cities-loading {
+  padding: 40px;
+  color: #8491a5;
+  text-align: center;
+}
+
+@keyframes cityModalOpen {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .delete-city-button {
+    opacity: 1;
+  }
+
+  .city-form-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .city-cancel-button,
+  .city-save-button {
+    width: 100%;
+  }
+}

@@ -1,21 +1,26 @@
 export interface City {
+   id: string;
   name: string;
   country: string;
   timeZone: string;
   fallbackGmt: string;
-  highlighted?: boolean;
+  highlighted: boolean;
+  order: number;
+}
+
+export interface CityFormData {
+  name: string;
+  country: string;
+  timeZone: string;
 }
 
 export interface TimeZoneData  {
-    countryCode?: string;
-  countryName?: string;
-  zoneName: string;
+    zoneName: string;
   gmtOffset: number;
   timestamp: number;
-  dst?: number;
 }
 export interface TimeApiResponse {
-  status: "OK" | "FAILED";
+ status: "OK" | "FAILED";
   message: string;
   zones: TimeZoneData[];
 }
@@ -24,5 +29,6 @@ export interface StoredTimeData extends TimeZoneData {
 
   fetchedAt: number;
 }
+
 
 
