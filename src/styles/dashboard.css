@@ -27,7 +27,36 @@ button {
   color: inherit;
   font: inherit;
 }
+.sidebar-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  min-height: 47px;
+  padding: 0 17px;
+  color: #c1c4c1;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
 
+.sidebar-item:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-item-active {
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(139, 92, 246, 0.55),
+    rgba(109, 40, 217, 0.7)
+  );
+}
 .dashboard {
   min-height: 100vh;
   display: grid;
